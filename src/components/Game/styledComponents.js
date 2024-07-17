@@ -14,7 +14,7 @@ export const MainContainer = styled.div`
 
 export const ScoreSection = styled.div`
   border: 2px solid #ffffff;
-  width: 90%;
+  width: 100%;
   max-width: 1000px;
   padding: 10px;
   border-radius: 10px;

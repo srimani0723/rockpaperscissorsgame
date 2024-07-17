@@ -9,8 +9,4 @@ export const Btn = styled.button`
 export const Img = styled.img`
   width: 150px;
   height: 150px;
-  @media screen and (max-width: 576px) {
-    width: 120px;
-    height: 120px;
-  }
 `

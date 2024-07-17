@@ -29,13 +29,14 @@ export const Img = styled.img`
 export const ResultBtn = styled.button`
   color: #223a5f;
   background-color: white;
-  font-size: large;
-  font-weight: 500;
-  font-family: 'Bree Serif';
-  padding: 5px;
+  font-size: medium;
+  font-weight: bold;
+  font-family: 'Roboto';
+  padding: 10px;
   padding-left: 10px;
   padding-right: 10px;
   border: 0px;
+  width: 150px;
   border-radius: 5px;
   cursor: pointer;
 `
