@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 
   padding: 5%;
 `
@@ -32,6 +32,7 @@ export const ScoreHeading = styled.h1`
   font-family: 'Bree Serif';
   width: 100px;
   margin: 0px;
+  margin-right: 10px;
 `
 
 export const ScoreContainer = styled.div`
@@ -44,6 +45,7 @@ export const ScoreContainer = styled.div`
   align-items: center;
 
   width: 100px;
+  margin-left: 10px;
 `
 export const ScoreTitle = styled.p`
   color: #223a5f;
@@ -59,21 +61,52 @@ export const Score = styled.p`
   font-weight: 500;
   margin: 0px;
 `
-export const BtnContainer = styled.div`
+
+export const RulesBtn = styled.button`
+  color: #223a5f;
+  background-color: white;
+  font-size: large;
+  font-weight: 500;
+  font-family: 'Bree Serif';
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 0px;
+  border-radius: 5px;
+  cursor: pointer;
+`
+export const PopupContainer = styled.div`
   display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
 `
 
-export const BtnMainContainer = styled.div`
+export const ClosePopupBtn = styled.button`
+  padding: 10px;
+  border: 0px;
+`
+
+export const RulesImage = styled.img`
+  width: 100%;
+  padding: 10%;
+  padding-bottom: 10px;
+  padding-top: 0px;
+`
+
+export const RulesContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-`
-export const Btn = styled.button`
-  border: 0px;
-
-  background-color: transparent;
+  align-items: flex-end;
 `
 
-export const Img = styled.img`
-  width: 120px;
+export const BtnContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 450px;
+  justify-content: center;
+
+  @media screen and (max-width: 576px) {
+    width: 360px;
+  }
 `
