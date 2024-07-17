@@ -8,23 +8,29 @@ import {
 } from './stylesComponents'
 
 const ResultView = props => {
-  const {} = props
+  const {yourChoice, opponentChoice, restartGame, resultMessage} = props
+
+  const onRestart = () => {
+    restartGame()
+  }
 
   return (
     <ResultContainer>
       <ResultImageView>
         <ResultContainer>
           <ResultH1>YOU</ResultH1>
-          <Img src="hi" alt="your choice" />
+          <Img src={yourChoice.imageUrl} alt="your choice" />
         </ResultContainer>
         <ResultContainer>
           <ResultH1>OPPONENT</ResultH1>
-          <Img src="hi" alt="opponent choice" />
+          <Img src={opponentChoice.imageUrl} alt="opponent choice" />
         </ResultContainer>
       </ResultImageView>
 
-      <ResultText>Result</ResultText>
-      <ResultBtn type="button">PLAY AGAIN</ResultBtn>
+      <ResultText>{resultMessage}</ResultText>
+      <ResultBtn type="button" onClick={onRestart}>
+        PLAY AGAIN
+      </ResultBtn>
     </ResultContainer>
   )
 }

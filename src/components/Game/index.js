@@ -22,6 +22,7 @@ import {
   RulesContainer,
   BtnContainer,
 } from './styledComponents'
+import ResultView from '../ResultView'
 
 class Game extends Component {
   state = {
@@ -46,17 +47,6 @@ class Game extends Component {
     )
   }
 
-  toggleResultView = () => {
-    this.setState(prevState => ({
-      resultView: !prevState.resultView,
-    }))
-  }
-
-  renderMainFinalResult = () => {
-    const {gameScore, yourChoice, opponentChoice, resultMessage} = this.state
-    console.log(gameScore, yourChoice, opponentChoice, resultMessage)
-  }
-
   setYourChoice = yourChoiceObj => {
     const {choicesList} = this.props
     const opponentChoice = choicesList[Math.floor(Math.random() * 3)]
@@ -64,7 +54,7 @@ class Game extends Component {
     if (yourChoiceObj.id === 'PAPER' && opponentChoice.id === 'ROCK') {
       this.setState(prevState => ({
         gameScore: prevState.gameScore + 1,
-        resultView: false,
+        resultView: true,
         yourChoice: yourChoiceObj,
         opponentChoice,
         resultMessage: 'YOU WON',
@@ -75,7 +65,7 @@ class Game extends Component {
     ) {
       this.setState(prevState => ({
         gameScore: prevState.gameScore - 1,
-        resultView: false,
+        resultView: true,
         yourChoice: yourChoiceObj,
         opponentChoice,
         resultMessage: 'YOU LOSE',
@@ -83,7 +73,7 @@ class Game extends Component {
     } else if (yourChoiceObj.id === 'ROCK' && opponentChoice.id === 'PAPER') {
       this.setState(prevState => ({
         gameScore: prevState.gameScore - 1,
-        resultView: false,
+        resultView: true,
         yourChoice: yourChoiceObj,
         opponentChoice,
         resultMessage: 'YOU LOSE',
@@ -94,7 +84,7 @@ class Game extends Component {
     ) {
       this.setState(prevState => ({
         gameScore: prevState.gameScore + 1,
-        resultView: false,
+        resultView: true,
         yourChoice: yourChoiceObj,
         opponentChoice,
         resultMessage: 'YOU WON',
@@ -105,7 +95,7 @@ class Game extends Component {
     ) {
       this.setState(prevState => ({
         gameScore: prevState.gameScore + 1,
-        resultView: false,
+        resultView: true,
         yourChoice: yourChoiceObj,
         opponentChoice,
         resultMessage: 'YOU WON',
@@ -116,14 +106,14 @@ class Game extends Component {
     ) {
       this.setState(prevState => ({
         gameScore: prevState.gameScore - 1,
-        resultView: false,
+        resultView: true,
         yourChoice: yourChoiceObj,
         opponentChoice,
         resultMessage: 'YOU LOSE',
       }))
     } else if (yourChoiceObj.id === opponentChoice.id) {
       this.setState({
-        resultView: false,
+        resultView: true,
         yourChoice: yourChoiceObj,
         opponentChoice,
         resultMessage: 'IT IS DRAW',
@@ -175,15 +165,30 @@ class Game extends Component {
     </PopupContainer>
   )
 
+  toggleResultView = () => {
+    this.setState(prevState => ({
+      resultView: !prevState.resultView,
+    }))
+  }
+
   render() {
     const {resultView} = this.state
-    const {gameScore, yourChoice, opponentChoice, resultMessage} = this.state
+    const {yourChoice, opponentChoice, resultMessage} = this.state
     console.log(yourChoice.id, opponentChoice.id, resultMessage)
 
     return (
       <MainContainer>
         {this.renderScoreSection()}
-        {resultView ? this.renderMainFinalResult() : this.renderButtons()}
+        {resultView ? (
+          <ResultView
+            resultMessage={resultMessage}
+            yourChoice={yourChoice}
+            opponentChoice={opponentChoice}
+            restartGame={this.toggleResultView}
+          />
+        ) : (
+          this.renderButtons()
+        )}
         {this.popupRender()}
       </MainContainer>
     )
